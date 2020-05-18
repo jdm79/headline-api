@@ -15,7 +15,7 @@ message = [
 "Daily Mail: Britain announces lowest daily coronavirus death total since startof lockdown as health chiefs reveal 160 more victims - taking official death toll to 34,796"
 ]
 
-@app.route("/", methods=['GET'])
+@app.route("/headlines", methods=['GET'])
 def notes_list():
    
     # note = str("hello, world! this is james speaking")
