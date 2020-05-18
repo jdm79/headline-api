@@ -1,7 +1,9 @@
 from flask import request, url_for
 from flask_api import FlaskAPI, status, exceptions
+import json
 
 app = FlaskAPI(__name__)
+
 
 message = [
 
@@ -20,7 +22,9 @@ def notes_list():
    
     # note = str("hello, world! this is james speaking")
     note = message
-    return note, status.HTTP_201_CREATED
+    note_json = json.dumps(note)
+
+    return note_json, status.HTTP_201_CREATED
 
 if __name__ == "__main__":
     app.run(debug=True)
