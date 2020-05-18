@@ -1,1 +1,1 @@
-"run_headlines": "python ./app.py"
+web: python ./app.py
