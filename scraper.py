@@ -120,6 +120,8 @@ def scrape(url):
 
   head = Headline(paper, headline)
   headlineJSONData = json.dumps(head, cls=HeadlineEncoder)
+  # json.dumps(json.JSONDecoder().decode(str_w_quotes))
+
 
 
   headlines.append(headlineJSONData)
