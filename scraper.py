@@ -119,7 +119,7 @@ def scrape(url):
       headline = "Error - failed to scrape the " + paper
 
   head = Headline(paper, headline)
-  headlineJSONData = json.dumps(head, indent=4, cls=HeadlineEncoder)
+  headlineJSONData = json.dumps(head, cls=HeadlineEncoder)
 
 
   headlines.append(headlineJSONData)
