@@ -4,6 +4,8 @@ from datetime import date
 from bs4 import BeautifulSoup
 import datetime
 import time
+import json
+from json import JSONEncoder
 
 urls = {
   "guardian_url": "https://www.theguardian.com/uk", 
@@ -35,6 +37,15 @@ financialtimes_url = "https://www.ft.com/"
 # metro_url = "https://metro.co.uk/"
 # herald_url = "https://www.heraldscotland.com/"
 
+class Headline:
+  def __init__(self, paper, headline):
+    self.paper = paper
+    self.headline = headline
+
+# subclass JSONEncoder
+class HeadlineEncoder(JSONEncoder):
+  def default(self, o):
+      return o.__dict__
 
 headlines = []
 
@@ -107,11 +118,12 @@ def scrape(url):
     else:
       headline = "Error - failed to scrape the " + paper
 
-  headlines.append( paper + ": " + headline )
+  head = Headline(paper, headline)
+  headlineJSONData = json.dumps(head, indent=4, cls=HeadlineEncoder)
+
+
+  headlines.append(headlineJSONData)
   # add a timestamp to be used on the app as last updated - maybe
-
-  
-
 
 def print_headlines():
   time_stamp = datetime.datetime.now()

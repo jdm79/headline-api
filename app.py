@@ -7,6 +7,9 @@ app = FlaskAPI(__name__)
 
 scraped_headlines = print_headlines()
 
+print(scraped_headlines)
+
+
 @app.route("/headlines", methods=['GET'])
 def headlines_list():
    
