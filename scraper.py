@@ -35,7 +35,7 @@ def scrape(url):
   soup = BeautifulSoup(results.text, "html.parser")
 
   if url == guardian_url:
-    paper = "The Grauniad"
+    paper = "The Guardian"
     headline_html = soup.find('span', class_='js-headline-text')
     if headline_html != None:
       headline = headline_html.text.strip()
