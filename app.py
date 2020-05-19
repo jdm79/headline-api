@@ -17,7 +17,7 @@ print(scraped_headlines)
 @app.route("/headlines", methods=['GET'])
 def headlines_list():
    
-    headlines = scraped_headlines
+    headlines = json.dumps(scraped_headlines)
 
     return headlines, status.HTTP_201_CREATED
 

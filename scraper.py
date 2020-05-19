@@ -37,17 +37,20 @@ financialtimes_url = "https://www.ft.com/"
 # metro_url = "https://metro.co.uk/"
 # herald_url = "https://www.heraldscotland.com/"
 
-class Headline:
-  def __init__(self, paper, headline):
-    self.paper = paper
-    self.headline = headline
-
-# subclass JSONEncoder
-class HeadlineEncoder(JSONEncoder):
-  def default(self, o):
-      return o.__dict__
-
 headlines = []
+
+response = { "status": "success", "data": headlines}
+
+
+# class Headline:
+#   def __init__(self, paper, headline):
+#     self.paper = paper
+#     self.headline = headline
+
+# # subclass JSONEncoder
+# class HeadlineEncoder(JSONEncoder):
+#   def default(self, o):
+#       return o.__dict__
 
 def scrape(url):
 
@@ -62,6 +65,7 @@ def scrape(url):
       headline = headline_html.text.strip()
     else:
       headline = "Error - failed to scrape " + paper
+
   if url == times_url:
     paper = "The Times"
     headline_html = soup.find('h3', class_='Headline--xl')
@@ -118,21 +122,20 @@ def scrape(url):
     else:
       headline = "Error - failed to scrape the " + paper
 
-  head = Headline(paper, headline)
-  headlineJSONData = json.dumps(head, cls=HeadlineEncoder)
+  # head = Headline(paper, headline)
+  myDictObj = { "paper":paper, "headline":headline }
+
+  # headlineJSONData = json.dumps(head, cls=HeadlineEncoder)
   # json.dumps(json.JSONDecoder().decode(str_w_quotes))
 
-
-
-  headlines.append(headlineJSONData)
+  headlines.append(myDictObj)
   # add a timestamp to be used on the app as last updated - maybe
 
 def print_headlines():
-  time_stamp = datetime.datetime.now()
-  date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")
-  print("")
-  print(date_stamp)
+  # time_stamp = datetime.datetime.now()
+  # date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")
+ 
   for url in urls.values():
     scrape(url)
     
-  return headlines
+  return response
