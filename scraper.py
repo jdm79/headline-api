@@ -97,7 +97,7 @@ def scrape(url):
     else:
       headline = "Error - failed to scrape the " + paper
 
-  headlines.append(headline)
+  headlines.append(paper + ": " + headline)
 
   
 
