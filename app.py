@@ -8,12 +8,11 @@ app = FlaskAPI(__name__)
 scraped_headlines = print_headlines()
 
 @app.route("/headlines", methods=['GET'])
-def notes_list():
+def headlines_list():
    
     headlines = scraped_headlines
-    headlines_json = json.dumps(headlines)
 
-    return headlines_json, status.HTTP_201_CREATED
+    return headlines, status.HTTP_201_CREATED
 
 if __name__ == "__main__":
     app.run(debug=True)

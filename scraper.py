@@ -25,13 +25,23 @@ dailymirror_url = "https://www.mirror.co.uk/"
 dailyexpress_url = "https://www.express.co.uk/"
 independent_url = "https://www.independent.co.uk/"
 financialtimes_url = "https://www.ft.com/"
+# inews_url = "https://inews.co.uk/"
+# morningpost_url = "https://morningstaronline.co.uk/"
+# dailystar_url = "https://www.dailystar.co.uk/"
+# sun_url = "https://www.thesun.co.uk/"
+# eveningstandard_url = "https://www.standard.co.uk/"
+# irishsun_url = "https://www.thesun.ie/"
+# thescotsman = "https://www.scotsman.com/"
+# metro_url = "https://metro.co.uk/"
+# herald_url = "https://www.heraldscotland.com/"
+
 
 headlines = []
 
 def scrape(url):
 
-  # headers = {"Accept-language": "en-US, en;q=0.5"}
-  results = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'})
+  headers = {'User-Agent': 'Mozilla/5.0'}
+  results = requests.get(url, headers=headers)
   soup = BeautifulSoup(results.text, "html.parser")
 
   if url == guardian_url:
@@ -97,7 +107,8 @@ def scrape(url):
     else:
       headline = "Error - failed to scrape the " + paper
 
-  headlines.append(paper + ": " + headline)
+  headlines.append( paper + ": " + headline )
+  # add a timestamp to be used on the app as last updated - maybe
 
   
 
