@@ -123,17 +123,13 @@ def scrape(url):
       headline = "Error - failed to scrape the " + paper
 
   # head = Headline(paper, headline)
-  myDictObj = { "paper": paper, "headline": headline }
-
-  # headlineJSONData = json.dumps(head, cls=HeadlineEncoder)
-  # json.dumps(json.JSONDecoder().decode(str_w_quotes))
+  time_stamp = datetime.datetime.now()
+  date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")
+  myDictObj = { "paper": paper, "headline": headline, "updated": date_stamp  }
 
   headlines.append(myDictObj)
-  # add a timestamp to be used on the app as last updated - maybe
 
 def print_headlines():
-  # time_stamp = datetime.datetime.now()
-  # date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")
  
   for url in urls.values():
     scrape(url)
