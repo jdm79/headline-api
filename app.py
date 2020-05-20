@@ -16,6 +16,7 @@ print(scraped_headlines)
 
 @app.route("/headlines", methods=['GET'])
 def headlines_list():
+    print_headlines()
    
     headlines = json.dumps(scraped_headlines)
 
