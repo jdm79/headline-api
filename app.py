@@ -138,17 +138,16 @@ def scrape(url):
   headlines.append(myDictObj)
 
 def print_headlines():
- 
+  headlines.clear()
   for url in urls.values():
     scrape(url)
     
   return response
 
 
-
+# the Route(s)
 app = FlaskAPI(__name__)
 CORS(app)
-
 
 @app.route("/headlines", methods=['GET'])
 
@@ -157,9 +156,6 @@ def headlines_list():
   scraped_headlines = print_headlines()
 
   return jsonify(scraped_headlines)
-  # headlines = json.dumps(scraped_headlines)
-
-  # return headlines, status.HTTP_201_CREATED
     
 if __name__ == "__main__":
     app.run(debug=True)
