@@ -37,7 +37,7 @@ financialtimes_url = "https://www.ft.com/"
 # metro_url = "https://metro.co.uk/"
 # herald_url = "https://www.heraldscotland.com/"
 
-headlines = {}
+headlines = []
 
 response = { "status": "success", "data": headlines}
 
@@ -123,12 +123,12 @@ def scrape(url):
       headline = "Error - failed to scrape the " + paper
 
   # head = Headline(paper, headline)
-  myDictObj = { paper: headline }
+  myDictObj = { "paper": paper, "headline": headline }
 
   # headlineJSONData = json.dumps(head, cls=HeadlineEncoder)
   # json.dumps(json.JSONDecoder().decode(str_w_quotes))
 
-  headlines.update(myDictObj)
+  headlines.append(myDictObj)
   # add a timestamp to be used on the app as last updated - maybe
 
 def print_headlines():
