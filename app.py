@@ -7,7 +7,6 @@ import json
 import datetime
 import time
 import json
-# from scraper import print_headlines
 import requests
 from requests import get
 from datetime import date
@@ -69,17 +68,6 @@ dailypost_url = "https://www.dailypost.co.uk/"
 headlines = []
 
 response = { "status": "success", "data": headlines}
-
-
-# class Headline:
-#   def __init__(self, paper, headline):
-#     self.paper = paper
-#     self.headline = headline
-
-# # subclass JSONEncoder
-# class HeadlineEncoder(JSONEncoder):
-#   def default(self, o):
-#       return o.__dict__
 
 def scrape(url):
 
