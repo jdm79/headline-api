@@ -6,12 +6,10 @@ from flask_cors import CORS
 import json
 import datetime
 import time
-import json
 import requests
 from requests import get
 from datetime import date
 from bs4 import BeautifulSoup
-
 from json import JSONEncoder
 
 urls = {
@@ -249,7 +247,6 @@ def print_headlines():
     scrape(url)
     
   return response
-
 
 # the Route(s)
 app = FlaskAPI(__name__)
