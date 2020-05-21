@@ -17,22 +17,31 @@ from json import JSONEncoder
 
 urls = {
   "guardian_url": "https://www.theguardian.com/uk", 
-  "times_url": "https://www.thetimes.co.uk/",
-  "telegraph_url": "https://www.telegraph.co.uk/",
-  "dailymail_url": "https://www.dailymail.co.uk/home/index.html",
-  "dailymirror_url":"https://www.mirror.co.uk/",
-  "dailyexpress_url": "https://www.express.co.uk/",
   "independent_url": "https://www.independent.co.uk/",
+  "times_url": "https://www.thetimes.co.uk/",
+  "dailymail_url": "https://www.dailymail.co.uk/home/index.html",
+
+
+  "dailymirror_url":"https://www.mirror.co.uk/",
   "financialtimes_url": "https://www.ft.com/",
+  "eveningstandard_url": "https://www.standard.co.uk/",
+  "dailyexpress_url": "https://www.express.co.uk/",
+
+  "inews_url": "https://inews.co.uk/",
   "metro_url": "https://metro.co.uk/",
   "dailystar_url": "https://www.dailystar.co.uk/",
-  "inews_url": "https://inews.co.uk/",
   "sun_url": "https://www.thesun.co.uk/",
+
   "morningstar_url": "https://morningstaronline.co.uk/",
-  "eveningstandard_url": "https://www.standard.co.uk/",
   "irishsun_url": "https://www.thesun.ie/",
   "thescotsman_url": "https://www.scotsman.com/",
-  "irishtimes_url": "https://www.irishtimes.com/"
+  "telegraph_url": "https://www.telegraph.co.uk/",
+
+
+  "heraldscotland_url": "https://www.heraldscotland.com/",
+  "irishtimes_url": "https://www.irishtimes.com/",
+  "dailypost_url": "https://www.dailypost.co.uk/",
+  "cityam_url": "https://www.cityam.com/"
 }
 
 guardian_url = "https://www.theguardian.com/uk"
@@ -51,8 +60,11 @@ eveningstandard_url = "https://www.standard.co.uk/"
 irishsun_url = "https://www.thesun.ie/"
 thescotsman_url = "https://www.scotsman.com/"
 metro_url = "https://metro.co.uk/"
-# herald_url = "https://www.heraldscotland.com/".
+heraldscotland_url = "https://www.heraldscotland.com/"
 irishtimes_url = "https://www.irishtimes.com/"
+cityam_url = "https://www.cityam.com/"
+dailypost_url = "https://www.dailypost.co.uk/"
+
 
 headlines = []
 
@@ -206,6 +218,30 @@ def scrape(url):
   if url == irishtimes_url:
     paper = "The Irish Times"
     headline_html = soup.find('span', class_="h2")
+    if headline_html != None:
+      headline = headline_html.text.strip()
+    else:
+      headline = "Error - failed to scrape the " + paper
+  
+  if url == heraldscotland_url:
+    paper = "The Herald Scotland"
+    headline_html = soup.find('h3')
+    if headline_html != None:
+      headline = headline_html.text.strip()
+    else:
+      headline = "Error - failed to scrape the " + paper
+
+  if url == cityam_url:
+    paper = "City AM"
+    headline_html = soup.find('div', class_="cityam-card-title")
+    if headline_html != None:
+      headline = headline_html.text.strip()
+    else:
+      headline = "Error - failed to scrape the " + paper
+
+  if url == dailypost_url:
+    paper = "The Daily Post"
+    headline_html = soup.find('a', class_="publication-font")
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
