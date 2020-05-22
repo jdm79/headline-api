@@ -64,6 +64,7 @@ dailypost_url = "https://www.dailypost.co.uk/"
 
 
 headlines = []
+fail = "Error - failed to scrape "
 
 response = { "status": "success", "data": headlines}
 
@@ -73,13 +74,15 @@ def scrape(url):
   results = requests.get(url, headers=headers)
   soup = BeautifulSoup(results.text, "html.parser")
 
+  # this is now big enough to be a function of its own
+  # refactor down
   if url == guardian_url:
     paper = "The Guardian"
     headline_html = soup.find('span', class_='js-headline-text')
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape " + paper
+      headline = fail + paper
 
   if url == times_url:
     paper = "The Times"
@@ -87,7 +90,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape " + paper
+      headline = fail + paper
 
   if url == telegraph_url:
     paper = "The Telegraph"
@@ -95,7 +98,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape " + paper
+      headline = fail + paper
 
   if url == dailymail_url:
     paper = "Daily Mail"
@@ -103,7 +106,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape " + paper
+      headline = fail + paper
 
   if url == dailymirror_url:
     paper = "Daily Mirror"
@@ -111,7 +114,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape " + paper
+      headline = fail + paper
 
   if url == dailyexpress_url:
     paper = "The Daily Express"
@@ -119,7 +122,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape " + paper
+      headline = fail + paper
 
   if url == independent_url:
     paper = "The Independent"
@@ -127,7 +130,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape " + paper
+      headline = fail + paper
 
   if url == financialtimes_url:
     paper = "The Financial Times"
@@ -135,7 +138,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == metro_url:
     paper = "Metro"
@@ -143,7 +146,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == dailystar_url:
     paper = "The Daily Star"
@@ -151,7 +154,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == inews_url:
     paper = "The i"
@@ -159,7 +162,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == sun_url:
     paper = "The Sun"
@@ -167,7 +170,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == morningstar_url:
     paper = "The Morning Star"
@@ -175,7 +178,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == eveningstandard_url:
     paper = "The Evening Standard"
@@ -183,7 +186,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == irishsun_url:
     paper = "The Irish Sun"
@@ -191,7 +194,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
   
   if url == thescotsman_url:
     paper = "The Scotsman"
@@ -199,7 +202,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == irishtimes_url:
     paper = "The Irish Times"
@@ -207,7 +210,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
   
   if url == heraldscotland_url:
     paper = "The Herald Scotland"
@@ -215,7 +218,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == cityam_url:
     paper = "City AM"
@@ -223,7 +226,7 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   if url == dailypost_url:
     paper = "The Daily Post"
@@ -231,11 +234,15 @@ def scrape(url):
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
-      headline = "Error - failed to scrape the " + paper
+      headline = fail + paper
 
   # head = Headline(paper, headline)
   time_stamp = datetime.datetime.now()
   date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")
+  # I want a tabloid key with value bool, to allow React to colour the paper div accordingly
+  # I want an author key
+  # I want a URL string to make the boxes clickable to open new page of that paper (or the headline itself
+  # url will have to go under the headline_html line
   myDictObj = { "paper": paper, "headline": headline, "updated": date_stamp  }
 
   headlines.append(myDictObj)
