@@ -77,6 +77,7 @@ def scrape(url):
   if url == guardian_url:
     paper = "The Guardian"
     headline_html = soup.find('span', class_='js-headline-text')
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -85,6 +86,7 @@ def scrape(url):
   if url == times_url:
     paper = "The Times"
     headline_html = soup.find('h3', class_='Headline--xl')
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -93,6 +95,7 @@ def scrape(url):
   if url == telegraph_url:
     paper = "The Telegraph"
     headline_html = soup.find('span', class_='list-headline__text')
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -101,6 +104,7 @@ def scrape(url):
   if url == dailymail_url:
     paper = "Daily Mail"
     headline_html = soup.find('h2', class_='linkro-darkred')
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -109,6 +113,7 @@ def scrape(url):
   if url == dailymirror_url:
     paper = "Daily Mirror"
     headline_html = soup.find('a', class_='publication-font')
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -117,6 +122,7 @@ def scrape(url):
   if url == dailyexpress_url:
     paper = "The Daily Express"
     headline_html = soup.find('h2')
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -125,6 +131,7 @@ def scrape(url):
   if url == independent_url:
     paper = "The Independent"
     headline_html = soup.find('h2')
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -133,6 +140,7 @@ def scrape(url):
   if url == financialtimes_url:
     paper = "The Financial Times"
     headline_html = soup.find('div', class_="o-teaser__heading")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -141,6 +149,7 @@ def scrape(url):
   if url == metro_url:
     paper = "Metro"
     headline_html = soup.find('span', class_="colour-box")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -149,6 +158,7 @@ def scrape(url):
   if url == dailystar_url:
     paper = "The Daily Star"
     headline_html = soup.find('a', class_="publication-font")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -157,6 +167,7 @@ def scrape(url):
   if url == inews_url:
     paper = "The i"
     headline_html = soup.find('a', class_="article-title sc-cHSUfg fcmytr")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -165,6 +176,7 @@ def scrape(url):
   if url == sun_url:
     paper = "The Sun"
     headline_html = soup.find('p', class_="teaser__subdeck")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -173,6 +185,7 @@ def scrape(url):
   if url == morningstar_url:
     paper = "The Morning Star"
     headline_html = soup.find('div', class_="top-story")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -181,6 +194,7 @@ def scrape(url):
   if url == eveningstandard_url:
     paper = "The Evening Standard"
     headline_html = soup.find('div', class_="content")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -189,6 +203,7 @@ def scrape(url):
   if url == irishsun_url:
     paper = "The Irish Sun"
     headline_html = soup.find('p', class_="teaser__subdeck")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -197,6 +212,7 @@ def scrape(url):
   if url == thescotsman_url:
     paper = "The Scotsman"
     headline_html = soup.find('a', class_="article-title sc-cHSUfg fcmytr")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -205,6 +221,7 @@ def scrape(url):
   if url == irishtimes_url:
     paper = "The Irish Times"
     headline_html = soup.find('span', class_="h2")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -213,6 +230,7 @@ def scrape(url):
   if url == heraldscotland_url:
     paper = "The Herald Scotland"
     headline_html = soup.find('h3')
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -221,6 +239,7 @@ def scrape(url):
   if url == cityam_url:
     paper = "City AM"
     headline_html = soup.find('div', class_="cityam-card-title")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -229,6 +248,7 @@ def scrape(url):
   if url == dailypost_url:
     paper = "The Daily Post"
     headline_html = soup.find('a', class_="publication-font")
+    link = url
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -237,7 +257,7 @@ def scrape(url):
   time_stamp = datetime.datetime.now()
   date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")
  
-  myDictObj = { "paper": paper, "headline": headline, "updated": date_stamp }
+  myDictObj = { "paper": paper, "headline": headline, "updated": date_stamp, "link": link }
   headlines.append(myDictObj)
 
 def print_headlines():
@@ -245,6 +265,8 @@ def print_headlines():
   headlines.clear()
   for url in urls.values():
     scrape(url)
+
+  print(url)
     
   return response
 
