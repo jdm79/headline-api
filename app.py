@@ -62,10 +62,8 @@ irishtimes_url = "https://www.irishtimes.com/"
 cityam_url = "https://www.cityam.com/"
 dailypost_url = "https://www.dailypost.co.uk/"
 
-
 headlines = []
 fail = "Error - failed to scrape "
-
 response = { "status": "success", "data": headlines}
 
 def scrape(url):
@@ -110,7 +108,7 @@ def scrape(url):
 
   if url == dailymirror_url:
     paper = "Daily Mirror"
-    headline_html = soup.find('div', class_='teaser-hero')
+    headline_html = soup.find('a', class_='publication-font')
     if headline_html != None:
       headline = headline_html.text.strip()
     else:
@@ -236,15 +234,10 @@ def scrape(url):
     else:
       headline = fail + paper
 
-  # head = Headline(paper, headline)
   time_stamp = datetime.datetime.now()
   date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")
-  # I want a tabloid key with value bool, to allow React to colour the paper div accordingly
-  # I want an author key
-  # I want a URL string to make the boxes clickable to open new page of that paper (or the headline itself
-  # url will have to go under the headline_html line
-  myDictObj = { "paper": paper, "headline": headline, "updated": date_stamp  }
-
+ 
+  myDictObj = { "paper": paper, "headline": headline, "updated": date_stamp }
   headlines.append(myDictObj)
 
 def print_headlines():
@@ -254,6 +247,9 @@ def print_headlines():
     scrape(url)
     
   return response
+
+
+#### ----------------------------------------------------- ####
 
 # the Route(s)
 app = FlaskAPI(__name__)
