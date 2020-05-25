@@ -229,7 +229,8 @@ def scrape(url):
   
   if url == heraldscotland_url:
     paper = "The Herald Scotland"
-    headline_html = soup.find('h3')
+    headline_htmlArray = soup.find_all('h3')
+    headline_html = headline_htmlArray[1]
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
