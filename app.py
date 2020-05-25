@@ -10,7 +10,6 @@ import requests
 from requests import get
 from datetime import date
 from bs4 import BeautifulSoup
-from json import JSONEncoder
 
 urls = {
   "guardian_url": "https://www.theguardian.com/uk", 
@@ -130,7 +129,8 @@ def scrape(url):
 
   if url == independent_url:
     paper = "The Independent"
-    headline_html = soup.find('h2')
+    headline_html_array = soup.find_all('h2')
+    headline_html = headline_html_array[0]
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()

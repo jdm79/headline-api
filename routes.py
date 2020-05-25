@@ -3,14 +3,8 @@ from flask_api import FlaskAPI, status, exceptions
 from flask import Flask
 from flask import jsonify
 from flask_cors import CORS
-import json
-import datetime
-import time
 import requests
 from requests import get
-from datetime import date
-from bs4 import BeautifulSoup
-from json import JSONEncoder
 
 
 dummydata = {
