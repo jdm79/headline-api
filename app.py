@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 
 urls = {
   "guardian_url": "https://www.theguardian.com/uk", 
-  "independent_url": "https://www.independent.co.uk/",
+  "independent_url": "https://www.independent.co.uk/news/uk",
   "times_url": "https://www.thetimes.co.uk/",
   "dailymail_url": "https://www.dailymail.co.uk/home/index.html",
 
@@ -46,7 +46,7 @@ telegraph_url = "https://www.telegraph.co.uk/"
 dailymail_url = "https://www.dailymail.co.uk/home/index.html"
 dailymirror_url = "https://www.mirror.co.uk/"
 dailyexpress_url = "https://www.express.co.uk/"
-independent_url = "https://www.independent.co.uk/"
+independent_url = "https://www.independent.co.uk/news/uk"
 financialtimes_url = "https://www.ft.com/"
 inews_url = "https://inews.co.uk/"
 morningstar_url = "https://morningstaronline.co.uk/"
