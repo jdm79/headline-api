@@ -11,6 +11,10 @@ from requests import get
 from datetime import date
 from bs4 import BeautifulSoup
 
+
+# this will go in another file eventually
+# I have ordered them in rows of four, left-wing to right-wing
+# broadly on their popularity
 urls = {
   "guardian_url": "https://www.theguardian.com/uk", 
   "independent_url": "https://www.independent.co.uk/news/uk",
@@ -32,7 +36,6 @@ urls = {
   "irishsun_url": "https://www.thesun.ie/",
   "thescotsman_url": "https://www.scotsman.com/",
   "telegraph_url": "https://www.telegraph.co.uk/",
-
 
   "heraldscotland_url": "https://www.heraldscotland.com/",
   "irishtimes_url": "https://www.irishtimes.com/",
@@ -61,18 +64,26 @@ irishtimes_url = "https://www.irishtimes.com/"
 cityam_url = "https://www.cityam.com/"
 dailypost_url = "https://www.dailypost.co.uk/"
 
+# initialising my headlines list to be populated by dictionary objects
 headlines = []
 fail = "Error - failed to scrape "
 response = { "status": "success", "data": headlines}
 
 def scrape(url):
 
+  # this latest header usually scrapes all the papers without issue
+  # but they have defences to stop me
   headers = {'User-Agent': 'Mozilla/5.0'}
+
+  # this saves the data from the get request in the results variable
   results = requests.get(url, headers=headers)
+  # beautiful soup methods are now available to clean this data response
   soup = BeautifulSoup(results.text, "html.parser")
 
   # this is now big enough to be a function of its own
   # refactor down
+  # here I clean the html individually, based on the paper's html 
+  # basic error handling in case of an unsuccessful scrape
   if url == guardian_url:
     paper = "The Guardian"
     headline_html = soup.find('span', class_='js-headline-text')
@@ -258,17 +269,21 @@ def scrape(url):
   time_stamp = datetime.datetime.now()
   date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")
  
+  # here i create the dictionary object, populating it with the following key/value pairs
+  # these key/value pairs will be available on the front end app to display
   myDictObj = { "paper": paper, "headline": headline, "updated": date_stamp, "link": link }
+  # once the dictionary object is created, each one goes into my headlines list
   headlines.append(myDictObj)
 
 def print_headlines():
   # clear the list so we only get the latest headlines
   headlines.clear()
+
+  # run this function over each paper
   for url in urls.values():
     scrape(url)
-
-  print(url)
     
+  # the function returns the final list
   return response
 
 
@@ -282,8 +297,10 @@ CORS(app)
 
 def headlines_list():
    
+  # grab the latest response from the print_headlines function
   scraped_headlines = print_headlines()
 
+  # turn this list into JSON for the front end to request
   return jsonify(scraped_headlines)
     
 if __name__ == "__main__":
