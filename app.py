@@ -21,7 +21,6 @@ urls = {
   "times_url": "https://www.thetimes.co.uk/",
   "dailymail_url": "https://www.dailymail.co.uk/home/index.html",
 
-
   "dailymirror_url":"https://www.mirror.co.uk/",
   "financialtimes_url": "https://www.ft.com/",
   "eveningstandard_url": "https://www.standard.co.uk/",
@@ -130,7 +129,7 @@ def scrape(url):
       headline = fail + paper
 
   if url == dailyexpress_url:
-    paper = "The Daily Express"
+    paper = "Daily Express"
     headline_html = soup.find('h2')
     link = url
     if headline_html != None:
@@ -139,7 +138,7 @@ def scrape(url):
       headline = fail + paper
 
   if url == independent_url:
-    paper = "The Independent"
+    paper = "Independent"
     headline_html_array = soup.find_all('h2')
     headline_html = headline_html_array[0]
     link = url
@@ -149,7 +148,7 @@ def scrape(url):
       headline = fail + paper
 
   if url == financialtimes_url:
-    paper = "The Financial Times"
+    paper = "Financial Times"
     headline_html = soup.find('div', class_="o-teaser__heading")
     link = url
     if headline_html != None:
@@ -167,7 +166,7 @@ def scrape(url):
       headline = fail + paper
 
   if url == dailystar_url:
-    paper = "The Daily Star"
+    paper = "Daily Star"
     headline_html = soup.find('a', class_="publication-font")
     link = url
     if headline_html != None:
@@ -194,7 +193,7 @@ def scrape(url):
       headline = fail + paper
 
   if url == morningstar_url:
-    paper = "The Morning Star"
+    paper = "Morning Star"
     headline_html = soup.find('div', class_="top-story")
     link = url
     if headline_html != None:
@@ -203,7 +202,7 @@ def scrape(url):
       headline = fail + paper
 
   if url == eveningstandard_url:
-    paper = "The Evening Standard"
+    paper = "Evening Standard"
     headline_html = soup.find('div', class_="content")
     link = url
     if headline_html != None:
@@ -258,7 +257,7 @@ def scrape(url):
       headline = fail + paper
 
   if url == dailypost_url:
-    paper = "The Daily Post"
+    paper = "Daily Post"
     headline_html = soup.find('a', class_="publication-font")
     link = url
     if headline_html != None:
