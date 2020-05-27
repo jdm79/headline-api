@@ -16,12 +16,12 @@ from bs4 import BeautifulSoup
 # I have ordered them in rows of four, left-wing to right-wing
 # broadly on their popularity
 urls = {
-  "guardian_url": "https://www.theguardian.com/uk", 
+  "dailymirror_url":"https://www.mirror.co.uk/",
   "independent_url": "https://www.independent.co.uk/news/uk",
   "times_url": "https://www.thetimes.co.uk/",
   "dailymail_url": "https://www.dailymail.co.uk/home/index.html",
 
-  "dailymirror_url":"https://www.mirror.co.uk/",
+  "guardian_url": "https://www.theguardian.com/uk", 
   "financialtimes_url": "https://www.ft.com/",
   "eveningstandard_url": "https://www.standard.co.uk/",
   "dailyexpress_url": "https://www.express.co.uk/",
