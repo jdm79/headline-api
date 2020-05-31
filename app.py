@@ -6,6 +6,7 @@ from flask_cors import CORS
 import json
 import datetime
 import time
+import random
 import requests
 from requests import get
 from datetime import date
@@ -31,7 +32,7 @@ urls = {
   "dailystar_url": "https://www.dailystar.co.uk/",
   "sun_url": "https://www.thesun.co.uk/",
 
-  "morningstar_url": "https://morningstaronline.co.uk/",
+  # "morningstar_url": "https://morningstaronline.co.uk/",
   "irishsun_url": "https://www.thesun.ie/",
   "thescotsman_url": "https://www.scotsman.com/",
   "telegraph_url": "https://www.telegraph.co.uk/",
@@ -51,7 +52,7 @@ dailyexpress_url = "https://www.express.co.uk/"
 independent_url = "https://www.independent.co.uk/news/uk"
 financialtimes_url = "https://www.ft.com/"
 inews_url = "https://inews.co.uk/"
-morningstar_url = "https://morningstaronline.co.uk/"
+# morningstar_url = "https://morningstaronline.co.uk/"
 dailystar_url = "https://www.dailystar.co.uk/"
 sun_url = "https://www.thesun.co.uk/"
 eveningstandard_url = "https://www.standard.co.uk/"
@@ -70,9 +71,10 @@ response = { "status": "success", "data": headlines}
 
 def scrape(url):
 
+  randomUrls = [ "https://www.facebook.com/", "https://www.google.co.uk", "https://www.twitter.com"]
   # this latest header usually scrapes all the papers without issue
   # but they have defences to stop me
-  headers = {'User-Agent': 'Mozilla/5.0'}
+  headers = {'User-Agent': 'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36', 'Referer': random.choice(randomUrls) }
 
   # this saves the data from the get request in the results variable
   results = requests.get(url, headers=headers)
