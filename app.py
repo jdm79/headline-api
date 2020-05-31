@@ -194,14 +194,14 @@ def scrape(url):
     else:
       headline = fail + paper
 
-  if url == morningstar_url:
-    paper = "Morning Star"
-    headline_html = soup.find('div', class_="top-story")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
+  # if url == morningstar_url:
+  #   paper = "Morning Star"
+  #   headline_html = soup.find('div', class_="top-story")
+  #   link = url
+  #   if headline_html != None:
+  #     headline = headline_html.text.strip()
+  #   else:
+  #     headline = fail + paper
 
   if url == eveningstandard_url:
     paper = "Evening Standard"
