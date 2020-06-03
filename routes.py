@@ -6,7 +6,7 @@ from flask_cors import CORS
 import requests
 from requests import get
 
-dummydata = {
+dummydata = [
   {"paper": "Daily mirror", "headline": "Boris tries to save Dominic Cummings' job by declaring 'it's not like he was visiting a lover' as maverick ally is accused of visiting parents' Durham home a SECOND time and breaking lockdown rules by 'strolling in bluebell wood' with his wife"},
   {"paper": "The Independent", "headline": "Boris tries to save Dominic Cummings' job by declaring 'it's not like he was visiting a lover' as maverick ally is accused of visiting parents' Durham home a SECOND time and breaking lockdown rules by 'strolling in bluebell wood' with his wife"},
   {"paper": "Daily Mail", "headline": "Boris tries to save Dominic Cummings' job by declaring 'it's not like he was visiting a lover' as maverick ally is accused of visiting parents' Durham home a SECOND time and breaking lockdown rules by 'strolling in bluebell wood' with his wifeTrump heads to golf course as US coronavirus death toll nears 100,000"},
@@ -23,7 +23,7 @@ dummydata = {
   {"paper": "The Scotsman", "headline": "Trump Boris tries to save Dominic Cummings' job by declaring 'it's not like he was visiting a lover' as maverick ally is accused of visiting parents' Durham home a SECOND time and breaking lockdown rules by 'strolling in bluebell wood' with his wife to golf course as US coronavirus death toll nears 100,000"},
   {"paper": "Telegraph", "headline": "Trump heads to golf course as US coronavirus death toll nears 100,000"},
   {"paper": "Times", "headline": "Boris tries to save Dominic Cummings' job by declaring 'it's not like he was visiting a lover' as maverick ally is accused of visiting parents' Durham home a SECOND time and breaking lockdown rules by 'strolling in bluebell wood' with his wife"},
-}
+]
 
 
 # the Route(s)
