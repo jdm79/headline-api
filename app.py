@@ -178,7 +178,7 @@ def scrape(url):
 
   if url == inews_url:
     paper = "The i"
-    headline_html = soup.find('a', class_="article-title sc-cHSUfg fcmytr")
+    headline_html = soup.find('div', class_="inews__post-hero__content")
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
