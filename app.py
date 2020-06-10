@@ -77,7 +77,7 @@ def scrape(url):
   headers = {'User-Agent': 'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36', 'Referer': random.choice(randomUrls) }
 
   # this saves the data from the get request in the results variable
-  results = requests.get(url, headers=headers)
+  results = requests.get(url, headers=headers, allow_redirects=False)
   # beautiful soup methods are now available to clean this data response
   soup = BeautifulSoup(results.text, "html.parser")
 
