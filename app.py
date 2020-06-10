@@ -32,7 +32,7 @@ urls = {
   "dailystar_url": "https://www.dailystar.co.uk/",
   "sun_url": "https://www.thesun.co.uk/",
 
-  # "morningstar_url": "https://morningstaronline.co.uk/",
+  "morningstar_url": "https://morningstaronline.co.uk/",
   "irishsun_url": "https://www.thesun.ie/",
   "thescotsman_url": "https://www.scotsman.com/",
   "telegraph_url": "https://www.telegraph.co.uk/",
@@ -52,7 +52,7 @@ dailyexpress_url = "https://www.express.co.uk/"
 independent_url = "https://www.independent.co.uk/news/uk"
 financialtimes_url = "https://www.ft.com/"
 inews_url = "https://inews.co.uk/"
-# morningstar_url = "https://morningstaronline.co.uk/"
+morningstar_url = "https://morningstaronline.co.uk/"
 dailystar_url = "https://www.dailystar.co.uk/"
 sun_url = "https://www.thesun.co.uk/"
 eveningstandard_url = "https://www.standard.co.uk/"
@@ -194,14 +194,14 @@ def scrape(url):
     else:
       headline = fail + paper
 
-  # if url == morningstar_url:
-  #   paper = "Morning Star"
-  #   headline_html = soup.find('div', class_="top-story")
-  #   link = url
-  #   if headline_html != None:
-  #     headline = headline_html.text.strip()
-  #   else:
-  #     headline = fail + paper
+  if url == morningstar_url:
+    paper = "Morning Star"
+    headline_html = soup.find('div', class_="top-story")
+    link = url
+    if headline_html != None:
+      headline = headline_html.text.strip()
+    else:
+      headline = fail + paper
 
   if url == eveningstandard_url:
     paper = "Evening Standard"
