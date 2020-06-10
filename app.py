@@ -37,10 +37,10 @@ urls = {
   "thescotsman_url": "https://www.scotsman.com/",
   "telegraph_url": "https://www.telegraph.co.uk/",
 
-  "heraldscotland_url": "https://www.heraldscotland.com/",
-  "irishtimes_url": "https://www.irishtimes.com/",
-  "dailypost_url": "https://www.dailypost.co.uk/",
-  "cityam_url": "https://www.cityam.com/"
+  # "heraldscotland_url": "https://www.heraldscotland.com/",
+  # "irishtimes_url": "https://www.irishtimes.com/",
+  # "dailypost_url": "https://www.dailypost.co.uk/",
+  # "cityam_url": "https://www.cityam.com/"
 }
 
 guardian_url = "https://www.theguardian.com/uk"
@@ -59,10 +59,10 @@ eveningstandard_url = "https://www.standard.co.uk/"
 irishsun_url = "https://www.thesun.ie/"
 thescotsman_url = "https://www.scotsman.com/"
 metro_url = "https://metro.co.uk/"
-heraldscotland_url = "https://www.heraldscotland.com/"
-irishtimes_url = "https://www.irishtimes.com/"
-cityam_url = "https://www.cityam.com/"
-dailypost_url = "https://www.dailypost.co.uk/"
+# heraldscotland_url = "https://www.heraldscotland.com/"
+# irishtimes_url = "https://www.irishtimes.com/"
+# cityam_url = "https://www.cityam.com/"
+# dailypost_url = "https://www.dailypost.co.uk/"
 
 # initialising my headlines list to be populated by dictionary objects
 headlines = []
@@ -230,42 +230,42 @@ def scrape(url):
     else:
       headline = fail + paper
 
-  if url == irishtimes_url:
-    paper = "The Irish Times"
-    headline_html = soup.find('span', class_="h2")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
+  # if url == irishtimes_url:
+  #   paper = "The Irish Times"
+  #   headline_html = soup.find('span', class_="h2")
+  #   link = url
+  #   if headline_html != None:
+  #     headline = headline_html.text.strip()
+  #   else:
+  #     headline = fail + paper
   
-  if url == heraldscotland_url:
-    paper = "The Herald Scotland"
-    headline_htmlArray = soup.find_all('h3')
-    headline_html = headline_htmlArray[1]
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
+  # if url == heraldscotland_url:
+  #   paper = "The Herald Scotland"
+  #   headline_htmlArray = soup.find_all('h3')
+  #   headline_html = headline_htmlArray[1]
+  #   link = url
+  #   if headline_html != None:
+  #     headline = headline_html.text.strip()
+  #   else:
+  #     headline = fail + paper
 
-  if url == cityam_url:
-    paper = "City AM"
-    headline_html = soup.find('div', class_="cityam-card-title")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
+  # if url == cityam_url:
+  #   paper = "City AM"
+  #   headline_html = soup.find('div', class_="cityam-card-title")
+  #   link = url
+  #   if headline_html != None:
+  #     headline = headline_html.text.strip()
+  #   else:
+  #     headline = fail + paper
 
-  if url == dailypost_url:
-    paper = "Daily Post"
-    headline_html = soup.find('a', class_="publication-font")
-    link = url
-    if headline_html != None:
-      headline = headline_html.text.strip()
-    else:
-      headline = fail + paper
+  # if url == dailypost_url:
+  #   paper = "Daily Post"
+  #   headline_html = soup.find('a', class_="publication-font")
+  #   link = url
+  #   if headline_html != None:
+  #     headline = headline_html.text.strip()
+  #   else:
+  #     headline = fail + paper
 
   time_stamp = datetime.datetime.now()
   date_stamp = time_stamp.strftime("%H:%M:%S (%Y-%m-%d)")
