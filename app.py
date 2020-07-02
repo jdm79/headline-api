@@ -71,13 +71,19 @@ response = { "status": "success", "data": headlines}
 
 def scrape(url):
 
-  randomUrls = [ "https://www.facebook.com/", "https://www.google.co.uk", "https://www.twitter.com"]
-  # this latest header usually scrapes all the papers without issue
-  # but they have defences to stop me
-  headers = {'User-Agent': 'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36', 'Referer': random.choice(randomUrls) }
+  randomUrls = [ 
+    "https://www.facebook.com/", 
+    "https://www.google.co.uk", 
+    "https://www.twitter.com"
+    ]
 
-  # this saves the data from the get request in the results variable
+  headers = {
+    'User-Agent': 'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36',
+    'Referer': random.choice(randomUrls) 
+    }
+
   results = requests.get(url, headers=headers, allow_redirects=False)
+
   # beautiful soup methods are now available to clean this data response
   soup = BeautifulSoup(results.text, "html.parser")
 
@@ -223,7 +229,7 @@ def scrape(url):
   
   if url == thescotsman_url:
     paper = "The Scotsman"
-    headline_html = soup.find('a', class_="article-title sc-cHSUfg fcmytr")
+    headline_html = soup.find('a', class_="article-title sc-fnwBNb gWJWcl")
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
