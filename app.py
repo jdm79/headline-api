@@ -202,7 +202,7 @@ def scrape(url):
 
   if url == morningstar_url:
     paper = "Morning Star"
-    headline_html = soup.find('div', class_="top-story")
+    headline_html = soup.find('h1')
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
