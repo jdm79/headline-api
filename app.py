@@ -34,7 +34,7 @@ urls = {
 
   "morningstar_url": "https://morningstaronline.co.uk/",
   "irishsun_url": "https://www.thesun.ie/",
-  "thescotsman_url": "https://www.scotsman.com/",
+  "thescotsman_url": "https://www.scotsman.com/news/uk-news/",
   "telegraph_url": "https://www.telegraph.co.uk/",
 
   # "heraldscotland_url": "https://www.heraldscotland.com/",
@@ -229,7 +229,7 @@ def scrape(url):
   
   if url == thescotsman_url:
     paper = "The Scotsman"
-    headline_html = soup.find('a', class_="article-title sc-fnwBNb gWJWcl")
+    headline_html = soup.find('a', class_="article-title sc-iNhVCk favtwHp")
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
@@ -281,6 +281,7 @@ def scrape(url):
   myDictObj = { "paper": paper, "headline": headline, "updated": date_stamp, "link": link }
   # once the dictionary object is created, each one goes into my headlines list
   headlines.append(myDictObj)
+
 
 def print_headlines():
   # clear the list so we only get the latest headlines
