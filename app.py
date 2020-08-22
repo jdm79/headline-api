@@ -229,7 +229,7 @@ def scrape(url):
   
   if url == thescotsman_url:
     paper = "The Scotsman"
-    headline_html = soup.find('a', class_="article-title sc-iNhVCk favtwHp")
+    headline_html = soup.find('a', class_="article-title sc-iNhVCk favtwH")
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
