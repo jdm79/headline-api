@@ -3,7 +3,6 @@ import requests
 import datetime
 import time
 from urls import urls
-
 from bs4 import BeautifulSoup
 
 # initialising my headlines list to be populated by dictionary objects
