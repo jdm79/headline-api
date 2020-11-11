@@ -165,7 +165,7 @@ def scrape(url):
 
   if url == eveningstandard_url:
     paper = "Evening Standard"
-    headline_html = soup.find('div', class_="content")
+    headline_html = soup.find('h2', class_="sc-bgJKda fPAgsv")
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
