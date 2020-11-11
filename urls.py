@@ -16,6 +16,6 @@ urls = {
 
   "morningstar_url": "https://morningstaronline.co.uk/",
   "irishsun_url": "https://www.thesun.ie/",
-  "thescotsman_url": "https://www.scotsman.com/news/uk-news/",
+  "herald_url": "https://www.heraldscotland.com/",
   "telegraph_url": "https://www.telegraph.co.uk/",
 }

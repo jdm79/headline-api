@@ -23,7 +23,7 @@ dailystar_url = "https://www.dailystar.co.uk/"
 sun_url = "https://www.thesun.co.uk/"
 eveningstandard_url = "https://www.standard.co.uk/"
 irishsun_url = "https://www.thesun.ie/"
-thescotsman_url = "https://www.scotsman.com/news/uk-news/"
+herald_url = "https://www.heraldscotland.com/"
 metro_url = "https://metro.co.uk/"
 
 def scrape(url):
@@ -181,9 +181,9 @@ def scrape(url):
     else:
       headline = fail + paper
   
-  if url == thescotsman_url:
-    paper = "The Scotsman"
-    headline_html = soup.find('a', class_='article-title sc-iNhVCk favtwH')
+  if url == herald_url:
+    paper = "The Herald"
+    headline_html = soup.find('div', class_='col-md-4 disaster-info col-sm-pull-8')
     link = url
     if headline_html != None:
       headline = headline_html.text.strip()
