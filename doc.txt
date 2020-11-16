@@ -1,0 +1,10 @@
+Notes to self:
+
+- this is the folder which is connected to github and heroku
+
+- deploy manually on heroku (flask-headlines-api) for the time-being (reconnect heroku CLI at some point or wait for new laptop)
+
+# how to run the server in dev mode
+$ flask run
+
+
